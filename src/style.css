@@ -1,0 +1,99 @@
+:root{
+    --secondary_font:'Open Sans', sans-serif;
+    --primary_font:'Nunito', sans-serif;
+
+}
+
+.registration-part .css-mhc70k-MuiGrid-root>.MuiGrid-item{
+    padding: 0;
+}
+.registration-part .box{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 70px;
+
+}
+.registration-part h2{
+    font-family: 'Nunito', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color:#11175D;
+    margin: 0;
+    margin-top: 225px;
+}
+ 
+.registration-part p{
+    font-family: 'Nunito', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color:#11175D;
+    margin: 0;
+}
+.registration-part .MuiFormHelperText-root{
+    color: red;
+    font-size: 14px;
+}
+.registration-part button{
+    text-transform: none;
+}
+.registration-part .msg{
+    margin-top:35px;
+    font-size: 13px;
+}
+.registration-part link{
+    color:coral;
+}
+.registration-part .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border:0;
+    border-bottom: 1px solid rgba(0,0,0,0.23);
+    border-radius: 0;
+}
+.registration-part .loginoption{
+    display: flex;
+}
+.registration-part .option{
+    margin-top: 10px;
+    
+    border: 1px solid rgba(3, 1, 76, 0.295);
+    border-radius: 9px;
+    margin-right: 10px;
+    padding:20px 40px 20px 80px ;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    color: #03014c;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.registration-part .option:hover{
+    transform: translateY(-3px);
+    box-shadow: 0px 7px 8px -10px rgba(0,0,0,0.75); 
+    
+    
+}
+.registration-part .option img{
+    
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+.registration-part .msg a{
+    display: inline-block;
+    color: #EA6C00;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: var(--secondary_font);
+}
+.registration-part .eye{
+    width:355px;
+    position: relative;
+    
+}
+.registration-part .eye .eyeicon{
+    position: absolute;
+    bottom:15px;
+    right:5px;
+    
+}
