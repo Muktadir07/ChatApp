@@ -6,13 +6,14 @@ import ReactDOM from "react-dom/client";
 import {Link,useNavigate} from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import {AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,FacebookAuthProvider } from "firebase/auth";
 
 
 const Login = () => {
   const [open, setOpen] = React.useState(false);
   const auth = getAuth();
   const navigate=useNavigate();
+  
 
   let[email,setEmail] = useState('');
   let[password,setPassword] = useState('');
@@ -24,6 +25,8 @@ const Login = () => {
   let[existemailerr,setExistemailerr]=useState('')
   let[checkpassword,setCheckpassword]=useState(false);
   let[sevarity,setSevarity]=useState('error');
+
+  
 
 
   let handlesubmit=()=>{
@@ -83,6 +86,56 @@ const Login = () => {
     setCheckpassword(!checkpassword);
 
   }
+  let handleGoogleSignin=()=>{
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
+
+  //------------------- Facebook Sign In------------------------------------------------//
+  let handleFacebookSignin=()=>{
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
+
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+
+    // ...
+  });
+
+  }
+
   return (
     <section className='registration-part'>
           <Grid container spacing={2}>
@@ -91,8 +144,14 @@ const Login = () => {
                 <div className='left'>
                   <h2>Login to your account</h2>
                   <div className='loginoption' style={{ marginBottom:'10px' }}>
-                    <div className='option'><img src="./assets/images/google.png "/>Login with Google</div>
-                    <div className='option'><img src="./assets/images/facebook.png "/>Login with Facebook</div>
+                    <div onClick={handleGoogleSignin} className='option'>
+                      <img src="./assets/images/google.png "/>
+                      Login with Google
+                      </div>
+                    <div onClick={handleFacebookSignin} className='option'>
+                      <img src="./assets/images/facebook.png "/>
+                      Login with Facebook
+                      </div>
                   </div>
 
                   <Collapse in={open}>
